@@ -30,7 +30,7 @@ print guess_array
 puts "\n"
 
 puts "Guess a letter If you want to solve press 1."
-get_guess = gets.chomp
-if get_guess == "1"
+letter_guess = gets.chomp
+if letter_guess == "1"
 	puts "What do you think the word is?"
 end
