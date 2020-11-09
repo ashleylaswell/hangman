@@ -1,6 +1,7 @@
 require 'csv'
 
 correct_length_dictionary = Array.new
+wrong_guesses_left = 6
 
 def correct_length(correct_length_dictionary, words)
 	if words.length >= 5 and words.length <= 12
@@ -29,7 +30,6 @@ guess_array = Array.new(random_word_length, "_")
 print guess_array
 puts "\n"
 
-
 while guess_array.include?("_")
 puts "Guess a letter If you want to solve press 1."
 letter_guess = gets.chomp
@@ -38,11 +38,15 @@ if letter_guess == "1"
 end
 i = 0
 	while i < random_word.length
-		if letter_guess == random_word[i]
+		if random_word.include?(letter_guess) == false
+			wrong_guesses_left -= 1
+			break
+		elsif letter_guess == random_word[i]
 			guess_array[i] = letter_guess
 		end
 		i += 1
 	end
 	print guess_array
 	puts "\n"
+	puts "You have #{wrong_guesses_left} wrong guesses left."
 end
