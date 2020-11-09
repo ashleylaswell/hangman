@@ -24,3 +24,10 @@ end
 
 random_word =  correct_length_words.sample
 puts random_word
+
+random_word_length = random_word.length
+puts random_word_length
+
+guess_array = Array.new(random_word_length, "_")
+
+print guess_array
