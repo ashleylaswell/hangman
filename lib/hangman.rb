@@ -34,3 +34,14 @@ letter_guess = gets.chomp
 if letter_guess == "1"
 	puts "What do you think the word is?"
 end
+
+i = 0
+while i < random_word.length
+	if letter_guess == random_word[i]
+		guess_array[i] = letter_guess
+	end
+	i += 1
+end
+
+print guess_array
+puts "\n"
