@@ -29,19 +29,20 @@ guess_array = Array.new(random_word_length, "_")
 print guess_array
 puts "\n"
 
+
+while guess_array.include?("_")
 puts "Guess a letter If you want to solve press 1."
 letter_guess = gets.chomp
 if letter_guess == "1"
 	puts "What do you think the word is?"
 end
-
 i = 0
-while i < random_word.length
-	if letter_guess == random_word[i]
-		guess_array[i] = letter_guess
+	while i < random_word.length
+		if letter_guess == random_word[i]
+			guess_array[i] = letter_guess
+		end
+		i += 1
 	end
-	i += 1
+	print guess_array
+	puts "\n"
 end
-
-print guess_array
-puts "\n"
