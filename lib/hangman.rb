@@ -9,10 +9,6 @@ def correct_length(correct_length_dictionary, words)
 	end
 end
 
-def random_word(correct_length_string)
-	correct_length_string.sample(1)
-end
-
 puts "Hangman initialized"
 
 dictionary = CSV.open "5desk.txt"
