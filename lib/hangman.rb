@@ -1,10 +1,10 @@
 require 'csv'
 
-correct_length_words = Array.new
+correct_length_dictionary = Array.new
 
-def correct_length(correct_length_words, words)
+def correct_length(correct_length_dictionary, words)
 	if words.length >= 5 and words.length <= 12
-		correct_length_words.push(words)
+		correct_length_dictionary.push(words)
 	else
 	end
 end
@@ -19,10 +19,10 @@ dictionary = CSV.open "5desk.txt"
 
 dictionary.each do |word|
 	words = word[0]
-	correct_length(correct_length_words, words)
+	correct_length(correct_length_dictionary, words)
 end
 
-random_word =  correct_length_words.sample
+random_word =  correct_length_dictionary.sample
 puts random_word
 
 random_word_length = random_word.length
