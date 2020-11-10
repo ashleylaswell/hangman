@@ -1,9 +1,0 @@
-require 'csv'
-
-puts "Hangman initialized"
-
-dictionary = CSV.open "5desk.txt"
-
-words = dictionary.each do |word|
-	puts words
-end
