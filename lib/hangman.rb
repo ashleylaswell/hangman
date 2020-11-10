@@ -89,7 +89,6 @@ end
 
 random_word =  correct_length_dictionary.sample
 random_word_length = random_word.length
-puts random_word
 
 guess_array = Array.new(random_word_length, "_")
 wrong_guesses_left = 6
