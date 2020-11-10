@@ -30,9 +30,13 @@ def missing_guess?(random_word, letter_guess)
 	random_word.include?(letter_guess) == false
 end
 
+def print_wrong_guesses(wrong_guesses_left)
+	puts "You have #{wrong_guesses_left} wrong guesses left."
+end
+
 def play(guess_array, random_word, wrong_guesses_left)
 	while guesses_left?(guess_array)
-		puts "Guess a letter If you want to solve press 1."
+		puts "Guess a letter. If you want to solve press 1."
 		letter_guess = gets.chomp
 		want_to_solve?(letter_guess)
 		puts "What do you think the word is?"
@@ -50,7 +54,7 @@ def play(guess_array, random_word, wrong_guesses_left)
 			i += 1
 		end
 		print_guess_array(guess_array)
-		puts "You have #{wrong_guesses_left} wrong guesses left."
+		print_wrong_guesses(wrong_guesses_left)
 	end
 end
 
@@ -64,10 +68,8 @@ dictionary.each do |word|
 end
 
 random_word =  correct_length_dictionary.sample
-puts random_word
-
 random_word_length = random_word.length
-puts random_word_length
+puts random_word
 
 guess_array = Array.new(random_word_length, "_")
 wrong_guesses_left = 6
