@@ -46,7 +46,7 @@ def correct_word?(solve, random_word)
 	solve == random_word
 end
 
-def play(guess_array, random_word, wrong_guesses_left)
+def play(guess_array, random_word, random_word_length, wrong_guesses_left)
 	while guesses_left?(guess_array)
 		solicit_move
 		letter_guess = gets.chomp
@@ -59,7 +59,7 @@ def play(guess_array, random_word, wrong_guesses_left)
 			end	
 		end
 		i = 0
-		while i < random_word.length
+		while i < random_word_length
 			if game_over?(wrong_guesses_left) 
 				puts "You lost"
 				puts "The word was #{random_word}."
@@ -96,4 +96,4 @@ already_guessed_array = Array.new
 wrong_guesses_left = 6
 
 print_guess_array(guess_array)
-play(guess_array, random_word, wrong_guesses_left)
+play(guess_array, random_word, random_word_length, wrong_guesses_left)
