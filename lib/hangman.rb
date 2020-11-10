@@ -6,9 +6,33 @@ def correct_length(correct_length_dictionary, words)
 	end
 end
 
+def solicit_move
+	puts "Guess a letter. If you want to solve press 1."
+end
+
 def print_guess_array(guess_array)
 	print guess_array
 	puts "\n"	
+end
+
+def solve_message
+	puts "What do you think the word is?"
+end
+
+def want_to_solve?(letter_guess)
+	letter_guess == "1"
+end
+
+def correct_word?(solve, random_word)
+	solve == random_word
+end
+
+def wrong_guess?(random_word, letter_guess)
+	random_word.include?(letter_guess) == false
+end
+
+def print_wrong_guesses(wrong_guesses_left)
+	puts "You have #{wrong_guesses_left} wrong guesses left."
 end
 
 def print_already_guessed_array(already_guessed_array)
@@ -20,32 +44,8 @@ def guesses_left?(guess_array)
 	guess_array.include?("_")
 end
 
-def want_to_solve?(letter_guess)
-	letter_guess == "1"
-end
-
 def game_over?(wrong_guesses_left)
 	wrong_guesses_left == 1
-end
-
-def wrong_guess?(random_word, letter_guess)
-	random_word.include?(letter_guess) == false
-end
-
-def print_wrong_guesses(wrong_guesses_left)
-	puts "You have #{wrong_guesses_left} wrong guesses left."
-end
-
-def solicit_move
-	puts "Guess a letter. If you want to solve press 1."
-end
-
-def solve_message
-	puts "What do you think the word is?"
-end
-
-def correct_word?(solve, random_word)
-	solve == random_word
 end
 
 def play(guess_array, already_guessed_array, random_word, random_word_length, wrong_guesses_left)
