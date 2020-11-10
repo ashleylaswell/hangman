@@ -34,12 +34,30 @@ def print_wrong_guesses(wrong_guesses_left)
 	puts "You have #{wrong_guesses_left} wrong guesses left."
 end
 
+def solicit_move
+	puts "Guess a letter. If you want to solve press 1."
+end
+
+def solve_message
+	puts "What do you think the word is?"
+end
+
+def correct_word?(solve, random_word)
+	solve == random_word
+end
+
 def play(guess_array, random_word, wrong_guesses_left)
 	while guesses_left?(guess_array)
-		puts "Guess a letter. If you want to solve press 1."
+		solicit_move
 		letter_guess = gets.chomp
-		want_to_solve?(letter_guess)
-		puts "What do you think the word is?"
+		if want_to_solve?(letter_guess)
+			solve_message
+			solve = gets.chomp
+			if correct_word?(solve, random_word)
+				puts "you win!"
+				return
+			end	
+		end
 		i = 0
 		while i < random_word.length
 			if game_over?(wrong_guesses_left) 
@@ -51,10 +69,12 @@ def play(guess_array, random_word, wrong_guesses_left)
 			elsif letter_guess == random_word[i]
 				guess_array[i] = letter_guess
 			end
-			i += 1
+		i += 1
 		end
 		print_guess_array(guess_array)
-		print_wrong_guesses(wrong_guesses_left)
+		if guesses_left?(guess_array)
+			print_wrong_guesses(wrong_guesses_left)
+		end
 	end
 end
 
