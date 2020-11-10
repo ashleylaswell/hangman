@@ -14,6 +14,11 @@ def print_guess_array(guess_array)
 	puts "\n"	
 end
 
+def print_already_guessed_array(already_guessed_array)
+	print already_guessed_array
+	puts "\n"
+end
+
 def guesses_left?(guess_array)
 	guess_array.include?("_")
 end
@@ -46,7 +51,7 @@ def correct_word?(solve, random_word)
 	solve == random_word
 end
 
-def play(guess_array, random_word, random_word_length, wrong_guesses_left)
+def play(guess_array, already_guessed_array, random_word, random_word_length, wrong_guesses_left)
 	while guesses_left?(guess_array)
 		solicit_move
 		letter_guess = gets.chomp
@@ -68,11 +73,13 @@ def play(guess_array, random_word, random_word_length, wrong_guesses_left)
 				guess_array[i] = letter_guess
 			elsif wrong_guess?(random_word, letter_guess)
 				wrong_guesses_left -= 1
+				already_guessed_array.push(letter_guess)
 				break
 			end
 		i += 1
 		end
 		print_guess_array(guess_array)
+		print_already_guessed_array(already_guessed_array)
 		if guesses_left?(guess_array)
 			print_wrong_guesses(wrong_guesses_left)
 		end
@@ -96,4 +103,4 @@ already_guessed_array = Array.new
 wrong_guesses_left = 6
 
 print_guess_array(guess_array)
-play(guess_array, random_word, random_word_length, wrong_guesses_left)
+play(guess_array, already_guessed_array, random_word, random_word_length, wrong_guesses_left)
