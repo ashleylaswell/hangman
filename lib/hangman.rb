@@ -100,7 +100,7 @@ random_word_length = random_word.length
 
 guess_array = Array.new(random_word_length, "_")
 already_guessed_array = Array.new
-wrong_guesses_left = 6
+wrong_guesses_left = 10
 
 print_guess_array(guess_array)
 play(guess_array, already_guessed_array, random_word, random_word_length, wrong_guesses_left)
