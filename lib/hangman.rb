@@ -62,6 +62,7 @@ def play(guess_array, random_word, wrong_guesses_left)
 		while i < random_word.length
 			if game_over?(wrong_guesses_left) 
 				puts "You lost"
+				puts "The word was #{random_word}."
 				return
 			elsif missing_guess?(random_word, letter_guess)
 				wrong_guesses_left -= 1
