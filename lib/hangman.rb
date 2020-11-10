@@ -1,7 +1,5 @@
 require 'csv'
 
-correct_length_dictionary = Array.new
-
 def correct_length(correct_length_dictionary, words)
 	if words.length >= 5 and words.length <= 12
 		correct_length_dictionary.push(words.downcase)
@@ -89,6 +87,7 @@ end
 puts "Hangman initialized"
 
 dictionary = CSV.open "5desk.txt"
+correct_length_dictionary = Array.new
 
 dictionary.each do |word|
 	words = word[0]
