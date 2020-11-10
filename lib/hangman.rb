@@ -26,7 +26,7 @@ def game_over?(wrong_guesses_left)
 	wrong_guesses_left == 1
 end
 
-def missing_guess?(random_word, letter_guess)
+def wrong_guess?(random_word, letter_guess)
 	random_word.include?(letter_guess) == false
 end
 
@@ -64,11 +64,11 @@ def play(guess_array, random_word, wrong_guesses_left)
 				puts "You lost"
 				puts "The word was #{random_word}."
 				return
-			elsif missing_guess?(random_word, letter_guess)
-				wrong_guesses_left -= 1
-				break
 			elsif letter_guess == random_word[i]
 				guess_array[i] = letter_guess
+			elsif wrong_guess?(random_word, letter_guess)
+				wrong_guesses_left -= 1
+				break
 			end
 		i += 1
 		end
@@ -92,6 +92,7 @@ random_word =  correct_length_dictionary.sample
 random_word_length = random_word.length
 
 guess_array = Array.new(random_word_length, "_")
+already_guessed_array = Array.new
 wrong_guesses_left = 6
 
 print_guess_array(guess_array)
