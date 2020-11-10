@@ -18,28 +18,39 @@ def guesses_left?(guess_array)
 	guess_array.include?("_")
 end
 
+def want_to_solve?(letter_guess)
+	letter_guess == "1"
+end
+
+def game_over?(wrong_guesses_left)
+	wrong_guesses_left == 1
+end
+
+def missing_guess?(random_word, letter_guess)
+	random_word.include?(letter_guess) == false
+end
+
 def play(guess_array, random_word, wrong_guesses_left)
 	while guesses_left?(guess_array)
 		puts "Guess a letter If you want to solve press 1."
 		letter_guess = gets.chomp
-		if letter_guess == "1"
-			puts "What do you think the word is?"
+		want_to_solve?(letter_guess)
+		puts "What do you think the word is?"
+		i = 0
+		while i < random_word.length
+			if game_over?(wrong_guesses_left) 
+				puts "You lost"
+				return
+			elsif missing_guess?(random_word, letter_guess)
+				wrong_guesses_left -= 1
+				break
+			elsif letter_guess == random_word[i]
+				guess_array[i] = letter_guess
+			end
+			i += 1
 		end
-	i = 0
-	while i < random_word.length
-		if wrong_guesses_left == 1
-			puts "You lost"
-			return
-		elsif random_word.include?(letter_guess) == false
-			wrong_guesses_left -= 1
-			break
-		elsif letter_guess == random_word[i]
-			guess_array[i] = letter_guess
-		end
-		i += 1
-	end
-	print_guess_array(guess_array)
-	puts "You have #{wrong_guesses_left} wrong guesses left."
+		print_guess_array(guess_array)
+		puts "You have #{wrong_guesses_left} wrong guesses left."
 	end
 end
 
