@@ -1,7 +1,7 @@
 require 'csv'
 
 def correct_length(correct_length_dictionary, words)
-	if words.length >= 5 and words.length <= 12
+	if words.length >= 3 and words.length <= 5 
 		correct_length_dictionary.push(words.downcase)
 	end
 end
@@ -62,7 +62,10 @@ def play(guess_array, already_guessed_array, random_word, random_word_length, wr
 		end
 		i = 0
 		while i < random_word_length
-			if game_over?(wrong_guesses_left) 
+			if guesses_left?(guess_array) == false and wrong_guesses_left >= 1
+				puts "you win"
+				return
+			elsif game_over?(wrong_guesses_left) 
 				puts "You lost"
 				puts "The word was #{random_word}."
 				return
